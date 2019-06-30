@@ -1,0 +1,33 @@
+body {
+    font-style: 'Noto Sans CJK KR';
+}
+
+nav {
+    background-color: white;
+}
+
+.form-signin > .form-control {
+    font-size: 18px;
+    padding: 1.5rem 1rem;
+}
+
+.mt-6 {
+    margin-top: 57px;
+}
+
+.card-image {
+    max-width: 75px !important;
+    overflow: hidden;
+}
+
+.card-image > img {
+    max-width: 100%;
+}
+
+a.card-body {
+    text-decoration: none !important;
+}
+
+a.card-body:hover {
+    background-color: #fafafa;
+}

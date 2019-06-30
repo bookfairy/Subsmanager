@@ -1,0 +1,44 @@
+{% load static %}
+{% load humanize %}
+<html>
+    {% include "head.html" with title="구독 목록" %}
+    <body class="mt-6">
+        {% include "nav.html" %}
+        <main>
+            <section class="jumbotron">
+                <div class="container">
+                    <h1 style="font-size:40pt" class="font-weight-bold display-4">Your Subscription Service</h1>
+                    <p style="font-size:20pt" class="lead">We SubsManager!!!</p>
+                </div>
+            </section>
+            
+            <section class="container">
+                <h1 class="col-12 font-weight-bold">구독 목록</h1>
+            {% for sub in subscriptions %}
+                <div class="card col-12 mt-4 px-0">
+                    <a class="card-body d-flex text-muted" href="{%url 'detail' sub.pk %}">
+                        <div class="card-image rounded mr-3">
+                            <img src='{{ sub.sub.image.url }}'>
+                        </div>
+                        <div class="card-text-container w-100">
+                            <div class="card-title text-dark font-weight-bold h5 mb-0">{{sub.sub.name}}</div>
+                            <div class="card-text">{{ sub.period }}개월</div>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                        <div class="card-info-container text-right ml-3">
+                            <div class="text-nowrap font-weight-bold h5">{{ sub.price|intcomma }}원</div>
+                           
+                            <div class="text-nowrap">{{ sub.last_pay|date:'Y년 m월 d일' }}</div>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+                <h3 class="col-12 mt-4 text-right font-weight-bold mb-5">
+                    총 {{ sum|intcomma }}원
+                </h3>
+            </section>
+        </main>
+    </body>
+</html>
